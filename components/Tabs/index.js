@@ -9,8 +9,19 @@ axios
   .get("https://lambda-times-backend.herokuapp.com/topics")
   .then(response => {
     console.log(response);
+    response.data.topics.forEach(topic => {
+      topicsDiv.appendChild(tabs(topic));
+    });
   });
 
 //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
+
+function tabs(x) {
+  const newTab = document.createElement("div");
+  newTab.classList.add("tab");
+  newTab.textContent = x;
+
+  return newTab;
+}
